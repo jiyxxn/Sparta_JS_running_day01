@@ -21,12 +21,22 @@ const Caculator = function (num1, operator, num2) {
   }
 };
 
+// * 기존 풀이 (for 반복문 사용)
+// function addScores(scores) {
+//   for (let i = 0; i < scores.length; i++) {
+//     scores[i] = Caculator(scores[i], "+", 3);
+//   }
+// }
+
+// * 수정된 풀이 (map 함수 사용)
 function addScores(scores) {
-  for (let i = 0; i < scores.length; i++) {
-    scores[i] = Caculator(scores[i], "+", 3);
-  }
+  scores = scores.map(function (element) {
+    return Caculator(element, "+", 3);
+  });
+
+  return scores;
 }
 
 addScores(scores);
 
-console.log(scores);
+console.log("CaclutatedScores ===>", addScores(scores));
