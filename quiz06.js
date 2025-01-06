@@ -17,32 +17,8 @@ const userACart = {
   ],
 };
 
-function deepCopy(target) {
-  // 기본 데이터 타입이나 null은 그대로 반환
-  if (target === null || typeof target !== "object") {
-    return target;
-  }
-
-  // 배열인 경우
-  if (Array.isArray(target)) {
-    const arrCopy = [];
-    for (let i = 0; i < target.length; i++) {
-      arrCopy[i] = deepCopy(target[i]); // 재귀적으로 복사
-    }
-    return arrCopy;
-  }
-
-  // 객체인 경우
-  const objCopy = {};
-  for (let key in target) {
-    if (target.hasOwnProperty(key)) {
-      objCopy[key] = deepCopy(target[key]); // 재귀적으로 복사
-    }
-  }
-  return objCopy;
-}
-
-const userBCart = deepCopy(userACart);
+// * 수정된 풀이 (JSON.parse(JSON.stringify(target)) 를 활용)
+const userBCart = JSON.parse(JSON.stringify(userACart));
 
 const coupon = { discount: 5000 };
 
